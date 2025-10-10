@@ -1,0 +1,32 @@
+ .vermelho {
+    background-color: #ff6666;
+}
+
+.gato {
+    background-image: url('gato.png');
+    background-repeat: repeat ;
+    background-size: 40px 40px;
+    background-color: rgb(70, 69, 69);
+}
+
+.gato p {
+    color: blue;
+}
+
+.gato h2 {
+    color: rgb(30, 30, 187);
+}
+
+.gato2 {
+    background-image: url('gato.png');
+    background-repeat: no-repeat;
+    background-size: 500px 500px;
+    background-position: bottom right;
+
+    height: 700px;
+    background-color: rgb(116, 199, 247);
+}
+
+.verde0{
+    background-color: rgba(0, 255, 0, 0.5);
+}

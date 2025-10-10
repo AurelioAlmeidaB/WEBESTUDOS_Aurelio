@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabelas com colspan e rowspan</title>
+	<style>
+		table, tr, td {
+			border: solid 1px red;
+		}
+		td {
+			padding: 30px 60px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Página 2 - Tabelas com colspan e rowspan</h1>
+
+	<h3>Tabela com colspan</h3>
+	<table>
+		<tr>
+			<td colspan="3">Colspan</td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>-</td>
+			<td>-</td>
+		</tr>
+	</table>
+
+	<h3>Tabela com rowspan</h3>
+	<table>
+		<tr>
+			<td rowspan="3">Rowspan</td><td>-</td>
+		</tr>
+		<tr>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>-</td>
+		</tr>
+	</table>
+
+	<h3>Tabela com colspan e rowspan</h3>
+	<table>
+		<tr>
+			<td colspan="2">colspan</td><td>-</td><td rowspan="2">Rowspan</td>
+		</tr>
+		<tr>
+			<td>-</td><td colspan="2">Colspan</td>
+		</tr>
+		<tr>
+			<td>-</td><td>-</td><td>-</td><td>-</td>
+		</tr>
+	</table>
+
+	
+</body>
+</html>

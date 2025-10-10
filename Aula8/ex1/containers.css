@@ -1,0 +1,35 @@
+/* === Selecionando a tag <span> === */
+span {
+    background-color: yellow; /* Coloca o fundo amarelo no texto destacado */
+    color: black;             /* Define a cor do texto como preta */
+    /* O <span> é usado dentro de textos, e só afeta o trecho onde for aplicado */
+}
+
+/* === Classe container1 === */
+.container1 {
+    border: 1vh solid black;    /* Cria uma borda preta sólida com espessura baseada na altura da tela (1vh) */
+    width: 65%;                 /* A largura ocupa 65% da tela do navegador */
+    font-size: 1vw;             /* O tamanho da fonte se adapta à largura da tela (1vw = 1% da largura da tela) */
+    margin: 30px;               /* Cria espaço externo (fora da caixa) de 30px em todos os lados */
+    padding: 15px;              /* Cria espaço interno (dentro da caixa) de 15px em todos os lados */
+    background-color: white;    /* Define o fundo do container como branco */
+    /* Essa classe é ótima para caixas que precisam ser responsivas (ajustar com o tamanho da tela) */
+}
+
+/* === Classe container2 === */
+.container2 {
+    border: 6px solid black;    /* Borda preta mais grossa (6px) */
+    width: 620px;               /* Largura fixa de 620 pixels (não é responsiva) */
+    font-size: 8pt;             /* Fonte pequena, em pontos (pt = unidade de impressão) */
+    margin: 20px;               /* Espaço externo de 20px */
+    padding: 15px;              /* Espaço interno de 15px */
+    background-color: white;    /* Fundo branco */
+    /* Essa versão é mais “fixa”, ideal para manter tamanho exato em layouts simples */
+}
+
+/* === Corpo da página === */
+body {
+    background-color: #d9f8f9;  /* Define o fundo da página em um tom de azul claro */
+    font-family: Arial, sans-serif; /* Define a fonte principal do texto */
+    /* O body é o contêiner principal da página, tudo dentro dele herda parte dessas configurações */
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define o conjunto de caracteres (permite acentuação e caracteres especiais) -->
+    <meta charset="UTF-8">
+
+    <!-- Deixa o site responsivo em celulares e telas pequenas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <!-- Importando diferentes fontes do Google Fonts -->
+    <!-- Saira: usada na classe .vermelho -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Dancing Script: usada na classe .azul -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+    <!-- Merriweather: usada na classe .verde -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+
+    <!-- Importa o arquivo CSS externo com todas as classes e estilos -->
+    <link rel="stylesheet" href="praticando2.css">
+</head>
+
+<!-- O corpo da página usa a classe 'roxo' definida no CSS -->
+<body class="roxo">
+
+    <!-- ---------- BLOCO INTRODUTÓRIO ---------- -->
+    <div>
+        <h1>Os três estados mais importantes do Brasil do ponto de vista econômico</h1>
+        <p>Do ponto de vista <span> econômico</span>, os <u>estados</u> mais importantes do Brasil são aqueles 
+        <u>com maior participação no PIB (Produto Interno Bruto)</u>, refletindo a força de sua economia. 
+        Os três estados mais importantes economicamente são:</p>
+    </div>
+
+    <!-- ---------- BLOCO VERMELHO: SÃO PAULO ---------- -->
+    <div class="vermelho">
+        <h2>São Paulo</h2>
+        <p>São Paulo é o maior estado em termos econômicos, representando cerca de 30% do PIB nacional...</p>
+
+        <!-- Link que leva a outra página (exemplo de navegação interna) -->
+        <p><a href="praticando2.1.html">As cinco maiores cidades</a> do 
+        <span>estado de São Paulo</span> são: São Paulo, Guarulhos, Campinas, São Bernardo do Campo e Santo André.</p>
+
+        <!-- Lista não ordenada com dados do estado -->
+        <h4>Informações</h4>
+        <ul>
+            <li><strong>Área:</strong> 248.222km²</li>
+            <li><strong>População (Censo 2022):</strong> 44,4 milhões de habitantes</li>
+            <li><strong>Ano de Fundação:</strong> 25 de Janeiro de 1554</li>
+            <li><strong>PIB:</strong> R$ 2,89 trilhões (2022)</li>
+        </ul>
+
+        <!-- Mapa incorporado diretamente do Google Maps -->
+        <h4>Mapa</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <!-- Tabela de dados -->
+        <table>
+            <caption><strong>Dados demográficos</strong></caption>
+            <tr class="cinza">
+                <td>Ano do Censo</td>
+                <td>População</td>
+                <td>Crescimento (%)</td>
+            </tr>
+            <tr class="branco"><td>1991</td><td>31.032.403</td><td>-</td></tr>
+            <tr class="branco"><td>2000</td><td>37.032.403</td><td>17,2%</td></tr>
+            <tr class="branco"><td>2010</td><td>41.262.199</td><td>11,4%</td></tr>
+            <tr class="branco"><td>2022</td><td>44.400.000</td><td>7,6%</td></tr>
+        </table>
+    </div>
+
+    <!-- ---------- BLOCO AZUL: RIO DE JANEIRO ---------- -->
+    <div class="azul">
+        <h2>Rio de Janeiro</h2>
+        <p>É o segundo maior estado em contribuição ao PIB...</p>
+        <p><a href="praticando2.2.html">As cinco maiores cidades</a> do 
+        <span>estado do Rio de Janeiro</span> são: Rio de Janeiro, São Gonçalo, Duque de Caxias, Nova Iguaçu e Niterói.</p>
+
+        <ul>
+            <li><strong>Área:</strong> 43.696km²</li>
+            <li><strong>População:</strong> 17,4 milhões</li>
+            <li><strong>PIB:</strong> R$ 882 bilhões</li>
+        </ul>
+
+        <h4>Mapa</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <table>
+            <caption><strong>Dados demográficos</strong></caption>
+            <tr class="cinza"><td>Ano</td><td>População</td><td>Crescimento</td></tr>
+            <tr class="branco"><td>1991</td><td>13.715.667</td><td>-</td></tr>
+            <tr class="branco"><td>2000</td><td>14.391.282</td><td>4,9%</td></tr>
+            <tr class="branco"><td>2010</td><td>15.989.929</td><td>11,1%</td></tr>
+            <tr class="branco"><td>2022</td><td>17.400.000</td><td>8,8%</td></tr>
+        </table>
+    </div>
+
+    <!-- ---------- BLOCO VERDE: MINAS GERAIS ---------- -->
+    <div class="verde">
+        <h2>Minas Gerais</h2>
+        <p>Minas Gerais tem uma economia diversificada, com destaque para a mineração...</p>
+        <p><a href="praticando2.3.html">As cinco maiores cidades</a> do 
+        <span>estado de Minas Gerais</span> são: Belo Horizonte, Uberlândia, Contagem, Juiz de Fora e Betim.</p>
+
+        <ul>
+            <li><strong>Área:</strong> 586.528km²</li>
+            <li><strong>População:</strong> 21,4 milhões</li>
+            <li><strong>PIB:</strong> R$ 875 bilhões</li>
+        </ul>
+
+        <h4>Mapa</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <table>
+            <caption><strong>Dados demográficos</strong></caption>
+            <tr class="cinza"><td>Ano</td><td>População</td><td>Crescimento</td></tr>
+            <tr class="branco"><td>1991</td><td>15.801.191</td><td>-</td></tr>
+            <tr class="branco"><td>2000</td><td>17.891.494</td><td>13,2%</td></tr>
+            <tr class="branco"><td>2010</td><td>19.597.330</td><td>9,5%</td></tr>
+            <tr class="branco"><td>2022</td><td>21.400.000</td><td>9,2%</td></tr>
+        </table>
+    </div>
+
+</body>
+</html>

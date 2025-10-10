@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabelas com colspan e rowspan</title>
+	<style>
+		table, tr, td {
+			border: solid 1px red;
+		}
+		td {
+			padding: 30px 60px;
+			text-align: center;
+		}
+
+		.verde {
+		background-color: green;
+	}
+		.azul {
+			background-color: blue;
+		}
+
+		.amarelo {
+			background-color: yellow;
+		}
+
+		.vermelho {
+			background-color: red;
+		}
+
+		.azulclaro {
+			background-color: lightblue;
+		}
+
+		.legenda td{
+		
+
+			padding: 5px;
+		}
+		.branco{
+			background-color: white;
+		}
+	</style>
+
+	
+</head>
+<body class="azulclaro">
+	<h1>Página 2 - Tabelas com colspan e rowspan</h1>
+
+	
+	
+	<table>
+		<caption>Tabela grande com colspan e rowspan</caption>
+		<tr class="verde">
+			<td colspan="2">Colspan</td><td>-</td><td rowspan="3">Rowspan</td>
+		</tr>
+
+		<tr class="vermelho">
+			<td>-</td> <td>-</td> <td>-</td>
+		</tr>
+
+		<tr class="azul">
+			<td>-</td><td colspan="2">Colspan</td>
+		</tr>
+
+		
+
+		<tr class="amarelo">
+			<td>-</td><td>-</td><td>-</td><td>-</td>
+		</tr>
+
+	</table>
+
+	<br><br><br><br>
+
+	<table class="legenda">
+
+		<caption>Legenda</caption>
+		
+		<tr>
+			<td class="branco">linha1</td>
+			<td class="verde">  -----  </td>
+			<td class="branco">verde</td>
+		</tr>
+		<tr>
+			<td class="branco">linha2</td>
+			<td class="vermelho">  -----  </td>
+			<td class="branco">vermelho</td>
+		</tr>
+		<tr>
+			<td class="branco">linha3</td>
+			<td class="azul">  -----  </td>
+			<td class="branco">azul</td>
+		</tr>
+		<tr>
+			<td class="branco">linha4</td>
+			<td class="amarelo">  -----  </td>
+			<td class="branco">amarelo</td>
+		</tr>
+	</table>
+	
+<p><a href="Aula3_Menu.html">Voltar ao menu principal</a></p>
+
+</body>
+</html>

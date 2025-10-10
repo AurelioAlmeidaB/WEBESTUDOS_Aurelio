@@ -1,0 +1,72 @@
+
+
+/* ---------- CLASSE VERMELHO ---------- */
+.vermelho{
+    color: red; /* Define a cor do texto como vermelho — destaca alertas, erros ou avisos */
+    background-color: rgb(255, 190, 178); /* Define o fundo usando RGB (mistura de cores) — tom rosado suave */
+    font-family: 'Saira', sans-serif; /* Define a fonte moderna sem serifa (sans-serif = sem “pontinhas”) */
+}
+
+/* ---------- CLASSE AZUL ---------- */
+.azul{
+    color: blue; /* Texto azul — transmite calma e confiança */
+    background-color: rgb(190, 224, 250); /* Fundo azul claro — deixa o texto mais leve e agradável */
+    font-family: 'Dancing Script', cursive; /* Fonte cursiva — estilo manuscrito, mais artístico */
+}
+
+/* ---------- CLASSE VERDE ---------- */
+.verde{
+    color: green; /* Texto verde — ótimo para mensagens de sucesso ou “correto” */
+    background-color: rgb(171, 253, 175); /* Fundo verde claro — traz contraste suave e leveza */
+    font-family: 'Merriweather', serif; /* Fonte serifada — estilo tradicional, usada em textos formais */
+}
+
+/* ---------- CLASSE ROXO ---------- */
+.roxo{
+    color: black; /* Texto preto — combina bem com o fundo lilás */
+    background-color: rgb(219, 175, 255); /* Fundo roxo/lilás claro — usado para seções de destaque */
+}
+
+/* ---------- CLASSE BRANCO ---------- */
+.branco{
+    background-color: white; /* Fundo branco — cor neutra que limpa o fundo */
+    color: black; /* Texto preto para contraste legível */
+}
+
+/* ---------- CLASSE CINZA ---------- */
+.cinza{
+    background-color: gray; /* Fundo cinza — pode ser usado em rodapés ou blocos neutros */
+    color: black; /* Texto preto — contraste adequado para leitura */
+}
+
+/* ---------- ESTILO PARA TABELAS ---------- */
+table, th, td {
+    border: 1px solid black; /* Cria bordas pretas finas em toda a tabela e células */
+    border-collapse: collapse; /* Junta as bordas — evita linhas duplas entre células */
+}
+/* 💡 “table, th, td” é um seletor múltiplo — aplica o estilo a todos esses elementos de uma vez */
+
+/* ---------- ESTILO PARA SPAN ---------- */
+span{
+    font-weight: bold; /* Deixa o texto em negrito */
+    background-color: yellow; /* Fundo amarelo — destaque tipo marca-texto */
+    color: black; /* Cor preta para boa visibilidade */
+}
+/* 💡 span é usado dentro de frases para destacar partes do texto sem quebrar a linha */
+
+/* ---------- ESTILO PARA DIV ---------- */
+div{
+    margin: 20px 75px 20px 75px; /* Espaçamento externo (topo, direita, baixo, esquerda) — afasta a div de outros elementos */
+    padding: 20px; /* Espaçamento interno — deixa o conteúdo “respirar” dentro da caixa */
+    border-radius: 15px; /* Bordas arredondadas — estilo moderno e suave */
+}
+/* 💡 div é um container genérico usado para organizar blocos de conteúdo */
+
+/* ---------- ESTILO PARA IMAGENS ---------- */
+img{
+    width: 300px; /* Largura fixa da imagem */
+    height: 200px; /* Altura fixa da imagem */
+    margin: 10px; /* Espaço ao redor da imagem */
+    border-radius: 15px; /* Bordas arredondadas — deixa a imagem mais bonita */
+}
+/* 💡 As imagens ficam padronizadas, com cantos suaves e espaçamento uniforme */

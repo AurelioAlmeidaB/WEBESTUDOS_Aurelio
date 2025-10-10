@@ -1,0 +1,93 @@
+/* =====================================================================
+   FONTES DOS TÍTULOS
+   ===================================================================== */
+.fonte {
+  font-family: 'Lobster', cursive; /* Fonte decorativa para títulos */
+}
+
+.fontedireita {
+  font-family: 'Lobster', cursive; /* Mesma fonte */
+  text-align: right;               /* Alinha o texto à direita */
+}
+
+/* =====================================================================
+   BLOCO VERDE
+   ===================================================================== */
+.divVerde {
+  background-color: rgb(110, 207, 110); /* Fundo verde claro */
+  width: 90%;                           /* Largura relativa à tela */
+  border-top: 0.6rem solid rgb(4, 0, 253);    /* Borda superior azul escura */
+  border-bottom: 0.6rem solid rgb(4, 0, 253); /* Borda inferior azul escura */
+  padding: 1rem;                        /* Espaço interno */
+  margin: 1rem auto;                     /* Margem automática centralizada */
+  border-radius: 10px;                   /* Bordas arredondadas */
+}
+
+/* =====================================================================
+   BLOCO VERMELHO
+   ===================================================================== */
+.divVermelha {
+  background-color: rgb(212, 123, 123);     /* Fundo vermelho claro */
+  width: 90%;                               /* Largura relativa à tela */
+  border-top: 0.6rem solid rgb(240, 15, 15);    /* Borda superior vermelha forte */
+  border-bottom: 0.6rem solid rgb(240, 15, 15); /* Borda inferior vermelha forte */
+  padding: 1rem;                            /* Espaço interno */
+  margin: 1rem auto;                         /* Centraliza o bloco */
+  border-radius: 10px;                       /* Bordas arredondadas */
+}
+
+/* =====================================================================
+   TAMANHOS DAS IMAGENS
+   ===================================================================== */
+
+/* BLOCO VERDE - Imagens em ordem crescente */
+.tamanho1 {
+  margin: 0.6rem;  /* Espaço ao redor da imagem */
+  width: 6rem;     /* Largura da imagem */
+}
+
+.tamanho2 {
+  margin: 0.3rem;
+  width: 12rem;
+}
+
+.tamanho3 {
+  margin: 0.3rem;
+  width: 18rem;
+}
+
+.tamanho4 {
+  margin: 0.3rem;
+  width: 24rem;
+}
+
+/* BLOCO VERMELHO - Imagens em ordem decrescente */
+.tamanho5 {
+  margin: 1.2rem 1.2rem 1.2rem 30%; /* Margem esquerda maior para centralizar parcialmente */
+  width: 24rem;
+}
+
+.tamanho6 {
+  margin: 1.2rem;
+  width: 18rem;
+}
+
+.tamanho7 {
+  margin: 1.2rem;
+  width: 12rem;
+}
+
+.tamanho8 {
+  margin: 1.2rem;
+  width: 6rem;
+}
+
+/* =====================================================================
+   OBSERVAÇÕES IMPORTANTES
+   ===================================================================== */
+/*
+- "rem" é uma unidade relativa ao tamanho da fonte raiz (normalmente 16px).
+- Margens diferentes podem ser usadas para alinhar ou espaçar imagens.
+- Bordas podem ter cores diferentes para destacar blocos.
+- Essa configuração cria blocos visualmente distintos com imagens de tamanhos variados.
+*/

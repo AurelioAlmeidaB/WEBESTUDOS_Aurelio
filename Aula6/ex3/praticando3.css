@@ -1,0 +1,50 @@
+img{
+    opacity: 0.5;
+}
+
+img:hover{
+    opacity: 1;
+}
+
+
+.verde {
+    background-color: green;
+}
+
+.verde1 {
+    background-color: green;
+    opacity: 0.8;
+}
+
+.verde2 {
+    background-color: green;
+    opacity: 0.6;
+}
+.verde3 {
+    background-color: green;
+    opacity: 0.4;
+}
+.verde4 {
+    background-color: green;
+    opacity: 0.2;
+}
+
+.green {
+    background-color: rgba(0, 128, 0, 0.8);
+  
+}
+
+.green1 {
+    background-color: rgba(0, 128, 0, 0.6);
+   
+}
+
+.green2 {
+    background-color: rgba(0, 128, 0, 0.4);
+    
+}
+
+.green3 {
+    background-color: rgba(0, 128, 0, 0.5);
+
+}
