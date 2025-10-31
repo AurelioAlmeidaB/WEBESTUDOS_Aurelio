@@ -7,21 +7,21 @@ body {
     width: 440px;
     margin: auto;
     padding-top: 50px; }
-.row {
+.linha {
     margin-bottom: 10px;
     font-size: 0; }
-.red {
+.vermelho {
     width: 140px;
     height: 140px;
     background: #e30613;
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;}
-.green {
+.verde {
     width: 140px;
     height: 140px;
     background: #325804;
     display: inline-block;
     margin-right: 10px; }
-.row {
+.linha {
     margin-right: -10px; }
