@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    height: 100vh; }
+.logo {
+    width: 440px;
+    margin: auto;
+    padding-top: 50px; }
+.row {
+    margin-bottom: 10px;
+    font-size: 0; }
+.red {
+    width: 140px;
+    height: 140px;
+    background: #e30613;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;}
+.green {
+    width: 140px;
+    height: 140px;
+    background: #325804;
+    display: inline-block;
+    margin-right: 10px; }
+.row {
+    margin-right: -10px; }
