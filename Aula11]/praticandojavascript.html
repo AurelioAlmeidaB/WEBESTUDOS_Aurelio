@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Praticando JavaScript</h2>
+
+<button onclick="myFunction()">Iniciar</button>
+
+<p id="demo"></p>
+
+<p>QUALQUER COISA SO PARA ENCHER AQUI</p>
+
+<script>
+function myFunction() {
+  let text;
+  let person = prompt("Qual é o seu nome?");
+
+
+  if (person == null || person.trim() == "") {
+    alert("voce cancelou o prompt");
+    
+  } else {
+    alert("Olá, " + person + "! Seja bem-vindo(a)!");
+
+
+    let sabe = confirm("Voce sabe programar em JavaScript?");
+
+ 
+    if (sabe) {
+      alert("Que otimo, " + person + "! Espero que voce aprenda ainda mais!");
+
+    } else {
+      alert("Nao tem problema, " + person + "! Voce ira aprender agora!");
+
+    }
+  }
+
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
