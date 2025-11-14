@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Praticando 3</title>
+
+    <style>
+        .container {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #preview {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Praticando 3</h2>
+
+<div id="preview">PREVIEW</div>
+
+<div class="container">
+    <div class="box" style="background:red;" data-cor="red"></div>
+    <div class="box" style="background:blue;" data-cor="blue"></div>
+    <div class="box" style="background:green;" data-cor="green"></div>
+    <div class="box" style="background:orange;" data-cor="orange"></div>
+    <div class="box" style="background:purple;" data-cor="purple"></div>
+</div>
+
+<script src="praticando3js.js"></script>
+</body>
+</html>
