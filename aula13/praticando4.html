@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praticando 4 - Mini-game com Limites</title>
+  <link rel="stylesheet" href="praticando4.css">
+</head>
+<body>
+  
+  <h1>Praticando 4 - Mini-game com Limites</h1>
+  
+  <div class="instrucoes">
+    <h2>Como Jogar:</h2>
+    <ol>
+      <li>Clique em um dos quadrados para <strong>selecionar</strong>.</li>
+      <li>Use as teclas <span class="tecla">W</span> <span class="tecla">A</span> <span class="tecla">S</span> <span class="tecla">D</span> para mover.</li>
+      <li>Os quadrados agora respeitam as paredes!</li>
+      <li>Clique novamente no quadrado para <strong>resetar</strong> a posição.</li>
+    </ol>
+  </div>
+
+  <div class="container">
+    <div class="quadrado vermelho" data-original-left="20" data-original-top="20"></div>
+    <div class="quadrado azul"     data-original-left="140" data-original-top="20"></div>
+    <div class="quadrado verde"    data-original-left="260" data-original-top="20"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="praticando4.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+
+.lampada-img {
+  margin: 0 auto; 
+  display: block;
+  width: 200px;
+  height: 400px;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+
+.lampada-img:hover {
+  transform: scale(1.02);
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+
+body.luz-acesa {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}

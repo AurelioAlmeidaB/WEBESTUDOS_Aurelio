@@ -1,0 +1,81 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  text-align: center; 
+  transition: background-color 0.3s ease;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  justify-content: center; 
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap; 
+}
+
+.box {
+  width: 100px; 
+  height: 100px;
+  border: 3px solid #fff;
+  border-radius: 10px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+/* Cores */
+#red { background-color: #ff4757; }
+#green { background-color: #2ed573; }
+#blue { background-color: #1e90ff; }
+#yellow { background-color: #ffa502; }
+#magenta { background-color: #ff6b81; }
+
+#resetBtn {
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #2f3542;
+  color: white;
+  border-radius: 50px;
+  transition: background-color 0.2s;
+}
+
+#resetBtn:hover {
+  background-color: #57606f;
+}
+
+#preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.4);
+  display: none;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2f3542;
+  min-height: 25px;
+  background-color: rgba(255,255,255,0.5);
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+}
