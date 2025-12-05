@@ -1,166 +1,328 @@
 $(document).ready(function() {
     
-    // --- URLs da API (Conforme o PDF) ---
-    const API_LISTAR = "https://epansani.com.br/2025/dwe1/ajax/list.php"; // [cite: 27]
-    const API_INSERIR = "https://epansani.com.br/2025/dwe1/ajax/ins.php"; // [cite: 30]
-    const API_EXCLUIR = "https://epansani.com.br/2025/dwe1/ajax/rem.php"; // [cite: 34]
+    // Configuração da API
+    const API_CONFIG = {
+        listar: "https://epansani.com.br/2025/dwe1/ajax/list.php",
+        inserir: "https://epansani.com.br/2025/dwe1/ajax/ins.php", 
+        excluir: "https://epansani.com.br/2025/dwe1/ajax/rem.php"
+    };
 
-    // 1. Carrega a lista ao abrir a página
-    listarDados();
+    // Estado da aplicação
+    const appState = {
+        carregando: false,
+        ultimaAtualizacao: null
+    };
 
-    // 2. Botão Atualizar
-    $("#btnAtualizar").click(function() {
-        listarDados();
-    });
+    // Inicialização
+    function init() {
+        atualizarTabela();
+        setupEventListeners();
+        atualizarStatus();
+    }
 
-    // 3. Botão Limpar
-    $("#btnLimpar").click(function() {
-        $("#formUsuario")[0].reset();
-        $("#campoNome").focus();
-    });
+    // Configuração de eventos
+    function setupEventListeners() {
+        $('#formCadastro').on('submit', handleFormSubmit);
+        $('#btnAtualizar').on('click', handleAtualizar);
+        $('#btnLimpar').on('click', handleLimpar);
+        $(document).on('click', '.btn-excluir', handleExcluir);
+    }
 
-    // ---------------------------------------------------------
-    // 4. GRAVAR (Adicionar)
-    // ---------------------------------------------------------
-    $("#formUsuario").submit(function(e) {
-        e.preventDefault(); // Não recarregar a página
-
-        let nome = $("#campoNome").val().trim();
-        let email = $("#campoEmail").val().trim();
-
-        if (nome === "" || email === "") {
-            Swal.fire('Atenção', 'Preencha nome e e-mail!', 'warning');
+    // Manipulador do formulário
+    async function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const formData = getFormData();
+        
+        if (!validarFormulario(formData)) {
             return;
         }
 
-        // Monta o JSON conforme pedido no PDF
-        let dadosJSON = JSON.stringify({
-            nome: nome,
-            email: email
-        });
-
-        // Feedback visual no botão
-        let btn = $(this).find('button[type="submit"]');
-        let txtOriginal = btn.html();
-        btn.html('<i class="fa-solid fa-spinner fa-spin"></i> Salvando...').prop('disabled', true);
-
-        $.ajax({
-            url: API_INSERIR,
-            type: 'POST',
-            contentType: 'application/json', // Obrigatório formato JSON [cite: 20]
-            data: dadosJSON,
-            success: function(retorno) {
-                // O servidor retorna true ou false [cite: 32]
-                if(retorno === true || retorno === "true") {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Sucesso!',
-                        text: 'O e-mail foi adicionado corretamente!', // Mensagem solicitada
-                        timer: 3000
-                    });
-                    $("#formUsuario")[0].reset();
-                    listarDados();
-                } else {
-                    Swal.fire('Erro', 'O servidor não aceitou a gravação.', 'error');
-                }
-            },
-            error: function(xhr) {
-                console.error(xhr);
-                Swal.fire('Erro na Conexão', 'Verifique se o Live Server está rodando ou se há bloqueio CORS.', 'error');
-            },
-            complete: function() {
-                btn.html(txtOriginal).prop('disabled', false);
-            }
-        });
-    });
-
-    // ---------------------------------------------------------
-    // 5. APAGAR (Excluir)
-    // ---------------------------------------------------------
-    // Usamos 'on' para funcionar em botões criados dinamicamente
-    $(document).on('click', '.btn-excluir', function() {
-        let idUsuario = $(this).data('id');
-
-        Swal.fire({
-            title: 'Tem certeza?',
-            text: "Deseja realmente excluir este registro?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Sim, apagar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                
-                let dadosJSON = JSON.stringify({ id: idUsuario }); // [cite: 35]
-
-                $.ajax({
-                    url: API_EXCLUIR,
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: dadosJSON,
-                    success: function(retorno) {
-                        // O servidor retorna true ou false [cite: 36]
-                        if(retorno === true || retorno === "true") {
-                            Swal.fire(
-                                'Excluído!',
-                                'O e-mail foi excluído corretamente!', // Mensagem solicitada
-                                'success'
-                            );
-                            listarDados();
-                        } else {
-                            Swal.fire('Erro', 'O registro não foi excluído.', 'error');
-                        }
-                    },
-                    error: function() {
-                        Swal.fire('Erro', 'Falha ao comunicar com o servidor.', 'error');
-                    }
-                });
-            }
-        });
-    });
-
-    // ---------------------------------------------------------
-    // 6. LISTAR (Exibir Tabela)
-    // ---------------------------------------------------------
-    function listarDados() {
-        let tbody = $("#tabelaCorpo");
-        tbody.html('<tr><td colspan="3" class="text-center text-muted py-3">Carregando dados...</td></tr>');
-
-        $.ajax({
-            url: API_LISTAR,
-            type: 'GET',
-            dataType: 'json', // [cite: 28]
-            success: function(dados) {
-                tbody.empty();
-
-                if (!dados || dados.length === 0) {
-                    tbody.html('<tr><td colspan="3" class="text-center py-3">Nenhum registro encontrado.</td></tr>');
-                    return;
-                }
-
-                // Percorre os dados recebidos
-                $.each(dados, function(index, user) {
-                    // Proteção caso o email venha escrito diferente no JSON
-                    let emailShow = user.email || user.Email || '---';
-
-                    let linha = `
-                        <tr>
-                            <td class="ps-4 fw-bold text-dark">${user.nome}</td>
-                            <td>${emailShow}</td>
-                            <td class="text-center">
-                                <button class="btn btn-danger btn-sm btn-excluir" data-id="${user.id}">
-                                    <i class="fa-solid fa-trash me-1"></i> Apagar
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                    tbody.append(linha);
-                });
-            },
-            error: function() {
-                tbody.html('<tr><td colspan="3" class="text-center text-danger">Falha ao carregar lista (Verifique o CORS).</td></tr>');
+        await executarOperacao('inserir', formData, {
+            mensagemSucesso: 'Registro adicionado com sucesso!',
+            callback: () => {
+                resetarFormulario();
+                atualizarTabela();
             }
         });
     }
+
+    // Manipulador de atualização
+    function handleAtualizar() {
+        atualizarTabela();
+        showNotification('🔃 Lista atualizada', 'info');
+    }
+
+    // Manipulador de limpar
+    function handleLimpar() {
+        resetarFormulario();
+        showNotification('🧹 Formulário limpo', 'info');
+        $('#inputNome').trigger('focus');
+    }
+
+    // Manipulador de exclusão
+    async function handleExcluir() {
+        const $botao = $(this);
+        const id = $botao.data('id');
+        const nome = $botao.data('nome');
+
+        const confirmacao = await showConfirmationDialog(
+            'Excluir Registro',
+            `Tem certeza que deseja excluir <strong>"${nome}"</strong>?`,
+            'warning'
+        );
+
+        if (confirmacao) {
+            await executarOperacao('excluir', { id: id }, {
+                mensagemSucesso: 'Registro excluído com sucesso!',
+                callback: atualizarTabela
+            });
+        }
+    }
+
+    // Obter dados do formulário
+    function getFormData() {
+        return {
+            nome: $('#inputNome').val().trim(),
+            email: $('#inputEmail').val().trim()
+        };
+    }
+
+    // Validar formulário
+    function validarFormulario(dados) {
+        if (!dados.nome || !dados.email) {
+            showNotification('⚠️ Preencha todos os campos!', 'warning');
+            return false;
+        }
+
+        if (!isValidEmail(dados.email)) {
+            showNotification('📧 E-mail inválido!', 'warning');
+            return false;
+        }
+
+        return true;
+    }
+
+    // Resetar formulário
+    function resetarFormulario() {
+        $('#formCadastro')[0].reset();
+    }
+
+    // Executar operações na API
+    async function executarOperacao(operacao, dados, opcoes = {}) {
+        if (appState.carregando) return;
+
+        try {
+            appState.carregando = true;
+            toggleLoadingState(true);
+
+            const resultado = await fetchAPI(API_CONFIG[operacao], dados);
+            
+            if (resultado) {
+                opcoes.mensagemSucesso && showNotification(opcoes.mensagemSucesso, 'success');
+                opcoes.callback && opcoes.callback();
+            } else {
+                showNotification('❌ Operação falhou!', 'error');
+            }
+
+            return resultado;
+
+        } catch (erro) {
+            console.error(`Erro na operação ${operacao}:`, erro);
+            showNotification('🌐 Erro de conexão!', 'error');
+            return false;
+        } finally {
+            appState.carregando = false;
+            toggleLoadingState(false);
+        }
+    }
+
+    // Função genérica para chamadas API
+    async function fetchAPI(url, dados) {
+        const parametros = new URLSearchParams();
+        
+        Object.keys(dados).forEach(chave => {
+            parametros.append(chave, dados[chave]);
+        });
+
+        const resposta = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: parametros.toString()
+        });
+
+        if (!resposta.ok) {
+            throw new Error(`HTTP error! status: ${resposta.status}`);
+        }
+
+        const textoResposta = await resposta.text();
+        return textoResposta.trim() === "true";
+    }
+
+    // Atualizar tabela
+    async function atualizarTabela() {
+        const $tbody = $('#tabelaDados');
+        
+        $tbody.html(`
+            <tr>
+                <td colspan="3" class="text-center py-4">
+                    <div class="spinner-border text-primary spinner-border-sm me-2"></div>
+                    Carregando registros...
+                </td>
+            </tr>
+        `);
+
+        try {
+            const resposta = await fetch(API_CONFIG.listar);
+            
+            if (!resposta.ok) {
+                throw new Error('Falha ao carregar dados');
+            }
+
+            const dados = await resposta.json();
+            renderizarTabela(dados);
+            appState.ultimaAtualizacao = new Date();
+            atualizarStatus();
+
+        } catch (erro) {
+            console.error('Erro ao carregar tabela:', erro);
+            $tbody.html(`
+                <tr>
+                    <td colspan="3" class="text-center text-danger py-4">
+                        <i class="fas fa-wifi-slash me-2"></i>
+                        Erro ao carregar dados
+                    </td>
+                </tr>
+            `);
+        }
+    }
+
+    // Renderizar tabela
+    function renderizarTabela(dados) {
+        const $tbody = $('#tabelaDados');
+        
+        if (!dados || dados.length === 0) {
+            $tbody.html(`
+                <tr>
+                    <td colspan="3" class="text-center py-4 text-muted">
+                        <i class="fas fa-inbox me-2"></i>
+                        Nenhum registro encontrado
+                    </td>
+                </tr>
+            `);
+            return;
+        }
+
+        const html = dados.map(registro => `
+            <tr class="animate__animated animate__fadeIn">
+                <td class="ps-4 fw-semibold">
+                    <i class="fas fa-user-circle me-2 text-primary"></i>
+                    ${escapeHTML(registro.nome)}
+                </td>
+                <td>
+                    <i class="fas fa-envelope me-2 text-secondary"></i>
+                    ${escapeHTML(registro.email)}
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-outline-danger btn-sm btn-excluir shadow-sm" 
+                            data-id="${registro.id}" 
+                            data-nome="${escapeHTML(registro.nome)}"
+                            title="Excluir registro">
+                        <i class="fas fa-trash-can me-1"></i>
+                        Remover
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+
+        $tbody.html(html);
+    }
+
+    // Controle de estado de loading
+    function toggleLoadingState(estado) {
+        const $btnGravar = $('#btnGravar');
+        
+        if (estado) {
+            $btnGravar.html('<i class="fas fa-circle-notch fa-spin me-2"></i>Processando...')
+                     .prop('disabled', true)
+                     .addClass('loading');
+            $('input, button').prop('disabled', true);
+        } else {
+            $btnGravar.html('<i class="fas fa-save me-2"></i>Gravar Registro')
+                     .prop('disabled', false)
+                     .removeClass('loading');
+            $('input, button').prop('disabled', false);
+        }
+    }
+
+    // Atualizar status
+    function atualizarStatus() {
+        const status = appState.ultimaAtualizacao 
+            ? `Última atualização: ${appState.ultimaAtualizacao.toLocaleTimeString()}`
+            : 'Sistema pronto';
+        
+        // Pode adicionar um elemento de status se quiser
+        console.log(status);
+    }
+
+    // Sistema de notificações
+    function showNotification(mensagem, tipo = 'info') {
+        const icon = {
+            success: '✅',
+            error: '❌',
+            warning: '⚠️',
+            info: 'ℹ️'
+        }[tipo];
+
+        // Usando Toast do SweetAlert2
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: tipo,
+            title: mensagem,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#fff',
+            color: '#333'
+        });
+    }
+
+    // Diálogo de confirmação
+    async function showConfirmationDialog(titulo, texto, icone = 'warning') {
+        const resultado = await Swal.fire({
+            title: titulo,
+            html: texto,
+            icon: icone,
+            showCancelButton: true,
+            confirmButtonText: 'Sim, confirmar!',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            reverseButtons: true,
+            customClass: {
+                popup: 'animate__animated animate__zoomIn'
+            }
+        });
+
+        return resultado.isConfirmed;
+    }
+
+    // Validação de e-mail
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
+    // Escape HTML
+    function escapeHTML(texto) {
+        const div = document.createElement('div');
+        div.textContent = texto;
+        return div.innerHTML;
+    }
+
+    // Inicializar aplicação
+    init();
 });
